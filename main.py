@@ -14,6 +14,9 @@ def main():
     for file in files:
         extensions.add(file.split(".")[-1])
 
+    for extension in extensions:
+       os.mkdir(sorted_files_path + "\\" + extension)
+
 
 if __name__ == "__main__":
     main()
