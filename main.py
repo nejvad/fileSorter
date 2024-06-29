@@ -1,4 +1,5 @@
 import os
+import shutil
 from os.path import exists
 
 
@@ -15,7 +16,10 @@ def main():
         extensions.add(file.split(".")[-1])
 
     for extension in extensions:
-       os.mkdir(sorted_files_path + "\\" + extension)
+        os.mkdir(sorted_files_path + "\\" + extension)
+
+    for file in files:
+        shutil.move(download_folder_path + "\\" + file, sorted_files_path + "\\" + file.split(".")[-1])
 
 
 if __name__ == "__main__":
