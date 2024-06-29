@@ -5,8 +5,8 @@ from os.path import exists, getctime
 
 
 def main():
-    download_folder_path = "C:\\Users\\jenes\\Downloads"
-    sorted_files_path = "C:\\Users\\jenes\\Sorted Downloads"
+    download_folder_path = os.environ.get("DOWNLOAD_DIR_PATH")
+    sorted_files_path = os.environ.get("SORTED_DOWNLOAD_DIR_PATH")
     create_folders(download_folder_path, sorted_files_path)
     sort_files(download_folder_path, sorted_files_path)
 
@@ -31,7 +31,6 @@ def sort_files(download, sorted_download):
     files = os.listdir(download)
 
     for file in files:
-
         file_creation_date = "_".join(str(ctime(getctime(download + "\\" + file))).split(" ")[:3])
         shutil.move(download + "\\" + file, sorted_download + "\\" + file.split(".")[1] + "-" + file_creation_date)
 
